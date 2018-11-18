@@ -10,9 +10,21 @@ window.onload = function() {
     lookUpBtn.addEventListener('click', function(e) {
         
         e.preventDefault();
-        var inputdata = document.getElementById("country").value;
-        var url = "world.php?country=" + "" + inputdata;
-        httpRequest.onreadystatechange = infoCountry;
+        if (document.getElementById("check").checked)
+        {
+           var url = "world.php?all=true";
+           httpRequest.onreadystatechange = infoCountry;
+        }
+        else if (document.getElementById("country").value)
+        {
+            var inputdata = document.getElementById("country").value;
+            url = "world.php?country=" + "" + inputdata; 
+            httpRequest.onreadystatechange = infoCountry;
+        }
+        else {
+            url = "world.php";
+            httpRequest.onreadystatechange = noInfoCountry;
+        }
         httpRequest.open('GET', url);
         httpRequest.send();
         
@@ -28,6 +40,17 @@ window.onload = function() {
                 result.innerHTML = response;
             }
         }
+    }
+    
+   function noInfoCountry() {
+       if (httpRequest.readyState === XMLHttpRequest.DONE)
+        {
+            if (httpRequest.status === 200)
+            {
+                result.innerHTML = "";
+            }
+        }
+        
     }
     
 };

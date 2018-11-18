@@ -1,0 +1,10 @@
+body {
+    font-family: Arial, Georgia, sans-serif;
+    background-color: DodgerBlue;
+    color: white;
+}
+
+#lookup {
+    background-color: MediumSeaGreen;
+    color: white;
+}
