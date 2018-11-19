@@ -47,6 +47,7 @@ window.onload = function() {
         {
             if (httpRequest.status === 200)
             {
+                alert("No search term was looked up!!")
                 result.innerHTML = "";
             }
         }
